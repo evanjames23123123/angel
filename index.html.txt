@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Letter For You</title>
+  <style>
+    :root {
+      --bg-color: #ffdae9;
+      --card-bg: #fff5f8;
+      --text-color: #5a2a3a;
+      --accent-color: #ff4081;
+      --border-color: #ffb6c1;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Georgia', serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .container {
+      background-color: var(--card-bg);
+      width: 100%;
+      max-width: 600px;
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(233, 30, 99, 0.15);
+      border: 2px solid var(--border-color);
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    h1 {
+      color: var(--accent-color);
+      margin-top: 0;
+      font-size: 2rem;
+    }
+
+    /* Photo Section */
+    .photo-section {
+      width: 100%;
+      height: 280px;
+      border: 2px dashed var(--border-color);
+      border-radius: 16px;
+      margin: 20px 0;
+      position: relative;
+      overflow: hidden;
+      background-color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .photo-section img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Letter Textarea */
+    .letter-input {
+      width: 100%;
+      min-height: 120px;
+      padding: 15px;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      font-family: 'Georgia', serif;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #4a1525;
+      resize: vertical;
+      box-sizing: border-box;
+      outline: none;
+      background-color: #ffffff;
+      text-align: center;
+    }
+
+    .letter-input:focus {
+      border-color: var(--accent-color);
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #885566;
+    }
+
+    #file-input {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>A Letter For You 💖</h1>
+
+    <!-- Picture Area with Usagi default picture -->
+    <div class="photo-section" onclick="document.getElementById('file-input').click();" title="Click to replace photo">
+      <img id="preview-img" src="https://raw.githubusercontent.com/UxxHans/Rainbow-Cats-Collection-Usagi-Shimeji/main/img/shime1.png" alt="Usagi">
+    </div>
+    <input type="file" id="file-input" accept="image/*" onchange="loadPhoto(event)">
+
+    <!-- Letter Writing Area -->
+    <textarea class="letter-input">I love you so much, angel</textarea>
+
+    <div class="footer">
+      Made with 💕
+    </div>
+  </div>
+
+  <script>
+    function loadPhoto(event) {
+      const image = document.getElementById('preview-img');
+      const file = event.target.files[0];
+
+      if (file) {
+        image.src = URL.createObjectURL(file);
+      }
+    }
+  </script>
+
+</body>
+</html>
